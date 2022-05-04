@@ -1,8 +1,10 @@
+import i18Obj from "translate.js";
+
 const body = document.querySelector("body");
 
 function showContent() {
     const content = `<div class="wrapper">
-                        <h1>Virtual <span>Key</span>board</h1>
+                        <h1>Virtual Keyboard</h1>
                         <textarea name="textarea" id="textarea"></textarea>
                         <div class="keyboard">
                             <div class="first-row">
@@ -89,3 +91,4 @@ function showContent() {
     body.insertAdjacentHTML("afterbegin", content);
 }
 showContent();
+
