@@ -1,14 +1,14 @@
-import i18Obj from "translate.js";
+import i18Obj from "./translate.js";
 
 const body = document.querySelector("body");
 
 function showContent() {
     const content = `<div class="wrapper">
-                        <h1>Virtual Keyboard</h1>
+                        <h1 data-i18="title">Virtual Keyboard</h1>
                         <textarea name="textarea" id="textarea"></textarea>
                         <div class="keyboard">
                             <div class="first-row">
-                                <div class="key">\`</div>
+                                <div class="key" data-i18="\`">\`</div>
                                 <div class="key">1</div>
                                 <div class="key">2</div>
                                 <div class="key">3</div>
@@ -25,48 +25,48 @@ function showContent() {
                             </div>
                             <div class="second-row">
                                 <div class="key control-key">Tab</div>
-                                <div class="key">q</div>
-                                <div class="key">w</div>
-                                <div class="key">e</div>
-                                <div class="key">r</div>
-                                <div class="key">t</div>
-                                <div class="key">y</div>
-                                <div class="key">u</div>
-                                <div class="key">i</div>
-                                <div class="key">o</div>
-                                <div class="key">p</div>
-                                <div class="key">[</div>
-                                <div class="key">]</div>
+                                <div class="key" data-i18="g">q</div>
+                                <div class="key" data-i18="w">w</div>
+                                <div class="key" data-i18="e">e</div>
+                                <div class="key" data-i18="r">r</div>
+                                <div class="key" data-i18="t">t</div>
+                                <div class="key" data-i18="y">y</div>
+                                <div class="key" data-i18="u">u</div>
+                                <div class="key" data-i18="i">i</div>
+                                <div class="key" data-i18="o">o</div>
+                                <div class="key" data-i18="p">p</div>
+                                <div class="key" data-i18="[">[</div>
+                                <div class="key" data-i18="]">]</div>
                                 <div class="key">\\</div>
                                 <div class="key control-key">Del</div>
                             </div>
                             <div class="third-row">
                                 <div class="key control-key middle">CapsLock</div>
-                                <div class="key">a</div>
-                                <div class="key">s</div>
-                                <div class="key">d</div>
-                                <div class="key">f</div>
-                                <div class="key">g</div>
-                                <div class="key">h</div>
-                                <div class="key">j</div>
-                                <div class="key">k</div>
-                                <div class="key">l</div>
-                                <div class="key">;</div>
-                                <div class="key">'</div>
+                                <div class="key" data-i18="a">a</div>
+                                <div class="key" data-i18="s">s</div>
+                                <div class="key" data-i18="d">d</div>
+                                <div class="key" data-i18="f">f</div>
+                                <div class="key" data-i18="g">g</div>
+                                <div class="key" data-i18="h">h</div>
+                                <div class="key" data-i18="j">j</div>
+                                <div class="key" data-i18="k">k</div>
+                                <div class="key" data-i18="l">l</div>
+                                <div class="key" data-i18=";">;</div>
+                                <div class="key" data-i18="quotes">'</div>
                                 <div class="key control-key middle">Enter</div>
                             </div>
                             <div class="fourth-row">
                                 <div class="key control-key middle">Shift</div>
-                                <div class="key">z</div>
-                                <div class="key">x</div>
-                                <div class="key">c</div>
-                                <div class="key">v</div>
-                                <div class="key">b</div>
-                                <div class="key">n</div>
-                                <div class="key">m</div>
-                                <div class="key">,</div>
-                                <div class="key">.</div>
-                                <div class="key">/</div>
+                                <div class="key" data-i18="z">z</div>
+                                <div class="key" data-i18="x">x</div>
+                                <div class="key" data-i18="c">c</div>
+                                <div class="key" data-i18="v">v</div>
+                                <div class="key" data-i18="b">b</div>
+                                <div class="key" data-i18="n">n</div>
+                                <div class="key" data-i18="m">m</div>
+                                <div class="key" data-i18=",">,</div>
+                                <div class="key" data-i18=".">.</div>
+                                <div class="key" data-i18="/">/</div>
                                 <div class="key control-key">&#9650;</div>
                                 <div class="key control-key middle">Shift</div>
                             </div>
@@ -83,8 +83,8 @@ function showContent() {
                             </div>
                         </div>
                         <div class="addition">
-                            <p>Keyboard created in Windows system</p>
-                            <p>For changing language: shift + alt</p>
+                            <p data-i18="system">Keyboard created in Windows system</p>
+                            <p data-i18="changing">For changing language: shift + alt</p>
                         </div>
                     </div>`;
 
