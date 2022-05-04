@@ -1,7 +1,7 @@
 const i18Obj = {
   en: {
     title: "Virtual Keyboard",
-    "`": "`",
+    "\`": "`",
     q: "q",
     w: "w",
     e: "e",
@@ -24,7 +24,7 @@ const i18Obj = {
     k: "k",
     l: "l",
     ";": ";",
-    guotes: "'",
+    quotes: "'",
     z: "z",
     x: "x",
     c: "c",
@@ -41,7 +41,7 @@ const i18Obj = {
   ru: {
     en: {
       title: "Виртуальная клавиатура",
-      "`": "ё",
+      "\`": "ё",
       q: "й",
       w: "ц",
       e: "у",
@@ -64,7 +64,7 @@ const i18Obj = {
       k: "л",
       l: "д",
       ";": "ж",
-      guotes: "э",
+      quotes: "э",
       z: "я",
       x: "ч",
       c: "с",
