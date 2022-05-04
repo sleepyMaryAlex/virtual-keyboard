@@ -2,8 +2,8 @@ const body = document.querySelector("body");
 
 function showContent() {
     const content = `<div class="wrapper">
-                        <h1>Virtual Keyboard</h1>
-                        <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+                        <h1>Virtual <span>Key</span>board</h1>
+                        <textarea name="textarea" id="textarea"></textarea>
                         <div class="keyboard">
                             <div class="first-row">
                                 <div class="key">\`</div>
@@ -19,7 +19,7 @@ function showContent() {
                                 <div class="key">0</div>
                                 <div class="key">-</div>
                                 <div class="key">=</div>
-                                <div class="key control-key">Backspace</div>
+                                <div class="key control-key middle">Backspace</div>
                             </div>
                             <div class="second-row">
                                 <div class="key control-key">Tab</div>
@@ -35,11 +35,11 @@ function showContent() {
                                 <div class="key">p</div>
                                 <div class="key">[</div>
                                 <div class="key">]</div>
-                                <div class="key">\</div>
+                                <div class="key">\\</div>
                                 <div class="key control-key">Del</div>
                             </div>
                             <div class="third-row">
-                                <div class="key control-key">CapsLock</div>
+                                <div class="key control-key middle">CapsLock</div>
                                 <div class="key">a</div>
                                 <div class="key">s</div>
                                 <div class="key">d</div>
@@ -51,10 +51,10 @@ function showContent() {
                                 <div class="key">l</div>
                                 <div class="key">;</div>
                                 <div class="key">'</div>
-                                <div class="key control-key">Enter</div>
+                                <div class="key control-key middle">Enter</div>
                             </div>
                             <div class="fourth-row">
-                                <div class="key control-key">Shift</div>
+                                <div class="key control-key middle">Shift</div>
                                 <div class="key">z</div>
                                 <div class="key">x</div>
                                 <div class="key">c</div>
@@ -66,19 +66,23 @@ function showContent() {
                                 <div class="key">.</div>
                                 <div class="key">/</div>
                                 <div class="key control-key">&#9650;</div>
-                                <div class="key control-key">Shift</div>
+                                <div class="key control-key middle">Shift</div>
                             </div>
                             <div class="fifth-row">
                                 <div class="key control-key">Ctrl</div>
                                 <div class="key control-key">Win</div>
                                 <div class="key control-key">Alt</div>
-                                <div class="key"></div>
+                                <div class="key big"></div>
                                 <div class="key control-key">Alt</div>
                                 <div class="key control-key">&#9668;</div>
                                 <div class="key control-key">&#9660;</div>
                                 <div class="key control-key">&#9658;</div>
                                 <div class="key control-key">Ctrl</div>
                             </div>
+                        </div>
+                        <div class="addition">
+                            <p>Keyboard created in Windows system</p>
+                            <p>For changing language: shift + alt</p>
                         </div>
                     </div>`;
 
