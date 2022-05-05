@@ -21,10 +21,10 @@ function showContent() {
                                 <div class="key key0">0</div>
                                 <div class="key dash">-</div>
                                 <div class="key equals">=</div>
-                                <div class="key control-key middle backspace">Backspace</div>
+                                <div class="key control-key middle backspace">backspace</div>
                             </div>
                             <div class="second-row">
-                                <div class="key control-key tab">Tab</div>
+                                <div class="key control-key tab">tab</div>
                                 <div class="key" data-i18="q">q</div>
                                 <div class="key" data-i18="w">w</div>
                                 <div class="key" data-i18="e">e</div>
@@ -38,10 +38,10 @@ function showContent() {
                                 <div class="key" data-i18="[">[</div>
                                 <div class="key" data-i18="]">]</div>
                                 <div class="key backslash">\\</div>
-                                <div class="key control-key del">Del</div>
+                                <div class="key control-key del">del</div>
                             </div>
                             <div class="third-row">
-                                <div class="key control-key middle capslock">CapsLock</div>
+                                <div class="key control-key middle capslock">caps lock</div>
                                 <div class="key" data-i18="a">a</div>
                                 <div class="key" data-i18="s">s</div>
                                 <div class="key" data-i18="d">d</div>
@@ -53,10 +53,10 @@ function showContent() {
                                 <div class="key" data-i18="l">l</div>
                                 <div class="key" data-i18=";">;</div>
                                 <div class="key" data-i18="quotes">'</div>
-                                <div class="key control-key middle enter">Enter</div>
+                                <div class="key control-key middle enter">enter</div>
                             </div>
                             <div class="fourth-row">
-                                <div class="key control-key middle shift-left">Shift</div>
+                                <div class="key control-key middle shift-left">shift</div>
                                 <div class="key" data-i18="z">z</div>
                                 <div class="key" data-i18="x">x</div>
                                 <div class="key" data-i18="c">c</div>
@@ -68,18 +68,18 @@ function showContent() {
                                 <div class="key" data-i18="period">.</div>
                                 <div class="key" data-i18="slash">/</div>
                                 <div class="key control-key arrow-up">&#9650;</div>
-                                <div class="key control-key middle shift-right">Shift</div>
+                                <div class="key control-key middle shift-right">shift</div>
                             </div>
                             <div class="fifth-row">
-                                <div class="key control-key control-left">Ctrl</div>
-                                <div class="key control-key win">Win</div>
-                                <div class="key control-key alt-left">Alt</div>
+                                <div class="key control-key control-left">ctrl</div>
+                                <div class="key control-key win">win</div>
+                                <div class="key control-key alt-left">alt</div>
                                 <div class="key big space"></div>
-                                <div class="key control-key alt-right">Alt</div>
+                                <div class="key control-key alt-right">alt</div>
                                 <div class="key control-key arrow-left">&#9668;</div>
                                 <div class="key control-key arrow-down">&#9660;</div>
                                 <div class="key control-key arrow-right">&#9658;</div>
-                                <div class="key control-key control-right">Ctrl</div>
+                                <div class="key control-key control-right">ctrl</div>
                             </div>
                         </div>
                         <div class="addition">
@@ -209,6 +209,7 @@ function pressKey(e) {
         backspace.classList.add("active-background");
     }
     if (e.keyCode === 9) {
+        e.preventDefault();
         tab.classList.add("active");
         tab.classList.add("active-background");
     }
@@ -351,10 +352,12 @@ function pressKey(e) {
         win.classList.add("active-background");
     }
     if (e.keyCode === 18 && e.code === 'AltLeft') {
+        e.preventDefault();
         altLeft.classList.add("active");
         altLeft.classList.add("active-background");
     }
     if (e.keyCode === 18 && e.code === 'AltRight') {
+        e.preventDefault();
         altRight.classList.add("active");
         altRight.classList.add("active-background");
     }
