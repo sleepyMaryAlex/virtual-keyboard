@@ -1,6 +1,6 @@
 const i18Obj = {
   'en': {
-    "slash-quote": "`",
+    "backquote": "`",
     q: "q",
     w: "w",
     e: "e",
@@ -38,7 +38,7 @@ const i18Obj = {
     changing: "For changing language: left shift + left alt",
   },
   'ru': {
-    "slash-quote": "ё",
+    "backquote": "ё",
     q: "й",
     w: "ц",
     e: "у",
