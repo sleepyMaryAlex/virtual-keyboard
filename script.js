@@ -13,19 +13,19 @@ function showContent() {
                         <textarea name="textarea" class="textarea" autofocus></textarea>
                         <div class="keyboard">
                             <div class="first-row">
-                                <div class="key letter" data-i18="backquote" id='Backquote'>\`</div>
-                                <div class="key" id="Digit1">1</div>
-                                <div class="key" id="Digit2">2</div>
-                                <div class="key" id="Digit3">3</div>
-                                <div class="key" id="Digit4">4</div>
-                                <div class="key" id="Digit5">5</div>
-                                <div class="key" id="Digit6">6</div>
-                                <div class="key" id="Digit7">7</div>
-                                <div class="key" id="Digit8">8</div>
-                                <div class="key" id="Digit9">9</div>
-                                <div class="key" id="Digit0">0</div>
-                                <div class="key" id="Minus">-</div>
-                                <div class="key" id="Equal">=</div>
+                                <div class="key letter symbol" data-i18="backquote" id='Backquote'>\`</div>
+                                <div class="key digit" id="Digit1">1</div>
+                                <div class="key digit" id="Digit2">2</div>
+                                <div class="key digit" id="Digit3">3</div>
+                                <div class="key digit" id="Digit4">4</div>
+                                <div class="key digit" id="Digit5">5</div>
+                                <div class="key digit" id="Digit6">6</div>
+                                <div class="key digit" id="Digit7">7</div>
+                                <div class="key digit" id="Digit8">8</div>
+                                <div class="key digit" id="Digit9">9</div>
+                                <div class="key digit" id="Digit0">0</div>
+                                <div class="key symbol" id="Minus">-</div>
+                                <div class="key symbol" id="Equal">=</div>
                                 <div class="key control-key middle" id="Backspace">backspace</div>
                             </div>
                             <div class="second-row">
@@ -40,9 +40,9 @@ function showContent() {
                                 <div class="key letter" data-i18="i" id="KeyI">i</div>
                                 <div class="key letter" data-i18="o" id="KeyO">o</div>
                                 <div class="key letter" data-i18="p" id="KeyP">p</div>
-                                <div class="key letter" data-i18="[" id="BracketLeft">[</div>
-                                <div class="key letter" data-i18="]" id="BracketRight">]</div>
-                                <div class="key" id="Backslash">\\</div>
+                                <div class="key letter symbol" data-i18="[" id="BracketLeft">[</div>
+                                <div class="key letter symbol" data-i18="]" id="BracketRight">]</div>
+                                <div class="key symbol" id="Backslash">\\</div>
                                 <div class="key control-key" id="Delete">del</div>
                             </div>
                             <div class="third-row">
@@ -56,12 +56,12 @@ function showContent() {
                                 <div class="key letter" data-i18="j" id="KeyJ">j</div>
                                 <div class="key letter" data-i18="k" id="KeyK">k</div>
                                 <div class="key letter" data-i18="l" id="KeyL">l</div>
-                                <div class="key letter" data-i18=";" id="Semicolon">;</div>
-                                <div class="key letter" data-i18="quotes" id="Quote">'</div>
+                                <div class="key letter symbol" data-i18=";" id="Semicolon">;</div>
+                                <div class="key letter symbol" data-i18="quotes" id="Quote">'</div>
                                 <div class="key control-key middle" id="Enter">enter</div>
                             </div>
                             <div class="fourth-row">
-                                <div class="key control-key middle" id="ShiftLeft">shift</div>
+                                <div class="key control-key middle shift" id="ShiftLeft">shift</div>
                                 <div class="key letter" data-i18="z" id="KeyZ">z</div>
                                 <div class="key letter" data-i18="x" id="KeyX">x</div>
                                 <div class="key letter" data-i18="c" id="KeyC">c</div>
@@ -69,11 +69,11 @@ function showContent() {
                                 <div class="key letter" data-i18="b" id="KeyB">b</div>
                                 <div class="key letter" data-i18="n" id="KeyN">n</div>
                                 <div class="key letter" data-i18="m" id="KeyM">m</div>
-                                <div class="key letter" data-i18="comma" id="Comma">,</div>
-                                <div class="key" data-i18="period" id="Period">.</div>
-                                <div class="key" data-i18="slash" id="Slash">/</div>
+                                <div class="key letter symbol" data-i18="comma" id="Comma">,</div>
+                                <div class="key letter symbol" data-i18="period" id="Period">.</div>
+                                <div class="key symbol" data-i18="slash" id="Slash">/</div>
                                 <div class="key control-key arrow-up" id="ArrowUp">&#9650;</div>
-                                <div class="key control-key middle" id="ShiftRight">shift</div>
+                                <div class="key control-key middle shift" id="ShiftRight">shift</div>
                             </div>
                             <div class="fifth-row">
                                 <div class="key control-key" id="ControlLeft">ctrl</div>
@@ -89,7 +89,7 @@ function showContent() {
                         </div>
                         <div class="addition">
                             <p data-i18="system">Keyboard created in Windows system</p>
-                            <p data-i18="changing">For changing language: left shift + left alt</p>
+                            <p data-i18="changing">For changing language: left ctrl + left alt</p>
                         </div>
                     </div>`;
 
@@ -99,9 +99,11 @@ showContent();
 
 const data = document.querySelectorAll("[data-i18]");
 const letters = document.querySelectorAll(".letter");
+const digits = document.querySelectorAll(".digit");
+const symbols = document.querySelectorAll(".symbol");
 getTranslate();
 
-const shiftLeft = document.querySelector("#ShiftLeft");
+const controlLeft = document.querySelector("#ControlLeft");
 const altLeft = document.querySelector("#AltLeft");
 
 const textarea = document.querySelector(".textarea");
@@ -120,9 +122,9 @@ function pressKey(e) {
             key.classList.add("active-background");
         }
         key.classList.add("active");
-        determineAction(key);
+        determinePressedKey(key);
     }
-    if (shiftLeft.classList.contains("active") && altLeft.classList.contains("active")) {
+    if (controlLeft.classList.contains("active") && altLeft.classList.contains("active")) {
         changeLanguage();
     }
 }
@@ -134,6 +136,7 @@ function releaseKey(e) {
             key.classList.remove("active-background");
         }
         key.classList.remove("active");
+        determineUpKey(key);
     }
 }
 
@@ -149,7 +152,6 @@ function changeLanguage() {
     } else if (!isCapsLocked) {
         data.forEach((elem) => elem.textContent = i18Obj[language][elem.dataset.i18].toLowerCase());
     }
-    
 }
 
 function saveToLocalStorage() {
@@ -164,15 +166,30 @@ keyboard.addEventListener("click", identifyKey);
 
 function identifyKey(e) {
     let key = e.target;
-    determineAction(key);
+    determinePressedKey(key);
 }
 
-function determineAction(key) {
+function determinePressedKey(key) {
     if (key.classList.contains("key") && !(key.classList.contains("control-key"))) {
         writeText(key);
     }
     if (key.classList.contains("capslock")) {
         toUpperAndLowerCase(key);
+    }
+    if (key.classList.contains("shift")) {
+        changeSymbols(key);
+        changeLetters(key);
+    }
+}
+
+function determineUpKey(key) {
+    if (key.classList.contains("shift")) {
+        if (!isCapsLocked) {
+            letters.forEach(letter => letter.textContent = letter.textContent.toLowerCase());
+        } else if (isCapsLocked) {
+            letters.forEach(letter => letter.textContent = letter.textContent.toUpperCase());
+        }
+        returnSymbols();
     }
 }
 
@@ -185,12 +202,98 @@ function writeText(key) {
 function toUpperAndLowerCase(key) {
     if (isCapsLocked) {
         key.classList.remove("capslock-active");
+        key.classList.remove("active");
+        key.classList.remove("active-background");
         letters.forEach(letter => letter.textContent = letter.textContent.toLowerCase());
         isCapsLocked = false;
     } else if (!isCapsLocked) {
         letters.forEach(letter => letter.textContent = letter.textContent.toUpperCase());
         key.classList.add("capslock-active");
+        key.classList.add("active");
+        key.classList.add("active-background");
         isCapsLocked = true;
+    }
+}
+
+function changeSymbols(key) {
+    let [one, two, three, four, five, six, seven, eight, nine, zero] = digits;
+    let [backquote, minus, equal, bracketleft, bracketright, backslash, semicolon, quote, comma, period, slash] = symbols;
+    if (language === 'en') {
+        one.textContent = '!';
+        two.textContent = '@';
+        three.textContent = '#';
+        four.textContent = '$';
+        five.textContent = '%';
+        six.textContent = '^';
+        seven.textContent = '&';
+        eight.textContent = '*';
+        nine.textContent = '(';
+        zero.textContent = ')';
+        backquote.textContent = '~';
+        minus.textContent = '_';
+        equal.textContent = '+';
+        bracketleft.textContent = '{';
+        bracketright.textContent = '}';
+        backslash.textContent = '|';
+        semicolon.textContent = ':';
+        quote.textContent = '"';
+        comma.textContent = '<';
+        period.textContent = '>';
+        slash.textContent = '?';
+    } else if (language === 'ru') {
+        one.textContent = '!';
+        two.textContent = '"';
+        three.textContent = '№';
+        four.textContent = ';';
+        five.textContent = '%';
+        six.textContent = ':';
+        seven.textContent = '?';
+        eight.textContent = '*';
+        nine.textContent = '(';
+        zero.textContent = ')';
+        minus.textContent = '_';
+        equal.textContent = '+';
+        backslash.textContent = '/';
+        slash.textContent = ',';
+    }
+}
+
+function returnSymbols() {
+    let [one, two, three, four, five, six, seven, eight, nine, zero] = digits;
+    let [backquote, minus, equal, bracketleft, bracketright, backslash, semicolon, quote, comma, period, slash] = symbols;
+    one.textContent = '1';
+    two.textContent = '2';
+    three.textContent = '3';
+    four.textContent = '4';
+    five.textContent = '5';
+    six.textContent = '6';
+    seven.textContent = '7';
+    eight.textContent = '8';
+    nine.textContent = '9';
+    zero.textContent = '0';
+    minus.textContent = '-';
+    equal.textContent = '=';
+    if (language === 'en') {
+        backquote.textContent = '`';
+        bracketleft.textContent = '[';
+        bracketright.textContent = ']';
+        backslash.textContent = '\\';
+        semicolon.textContent = ';';
+        quote.textContent = '\'';
+        comma.textContent = ',';
+        period.textContent = '.';
+        slash.textContent = '/';
+    } else if (language = 'ru') {
+        backslash.textContent = '\\';
+        slash.textContent = '.';
+    }
+}
+
+function changeLetters() {
+    if (isCapsLocked) {
+        letters.forEach(letter => letter.textContent = letter.textContent.toLowerCase());
+    } else if (!isCapsLocked) {
+        letters.forEach(letter => letter.textContent = letter.textContent.toUpperCase());
     }
 }
 
