@@ -101,6 +101,7 @@ const data = document.querySelectorAll("[data-i18]");
 const letters = document.querySelectorAll(".letter");
 const digits = document.querySelectorAll(".digit");
 const symbols = document.querySelectorAll(".symbol");
+const shifts = document.querySelectorAll(".shift");
 getTranslate();
 
 const controlLeft = document.querySelector("#ControlLeft");
@@ -122,6 +123,10 @@ function pressKey(e) {
             key.classList.add("active-background");
         }
         key.classList.add("active");
+        if (key.classList.contains("shift")) {
+            changeSymbols();
+            changeLetters();
+        }
         determinePressedKey(key);
     }
     if (controlLeft.classList.contains("active") && altLeft.classList.contains("active")) {
@@ -164,6 +169,16 @@ function getTranslate() {
 
 keyboard.addEventListener("click", identifyKey);
 
+shifts.forEach(shift => shift.addEventListener("mousedown", () => {
+    changeSymbols();
+    changeLetters();
+}));
+
+shifts.forEach(shift => shift.addEventListener("mouseup", (e) => {
+    let key = e.target;
+    determineUpKey(key);
+}));
+
 function identifyKey(e) {
     let key = e.target;
     determinePressedKey(key);
@@ -175,10 +190,6 @@ function determinePressedKey(key) {
     }
     if (key.classList.contains("capslock")) {
         toUpperAndLowerCase(key);
-    }
-    if (key.classList.contains("shift")) {
-        changeSymbols(key);
-        changeLetters(key);
     }
 }
 
@@ -215,7 +226,7 @@ function toUpperAndLowerCase(key) {
     }
 }
 
-function changeSymbols(key) {
+function changeSymbols() {
     let [one, two, three, four, five, six, seven, eight, nine, zero] = digits;
     let [backquote, minus, equal, bracketleft, bracketright, backslash, semicolon, quote, comma, period, slash] = symbols;
     if (language === 'en') {
