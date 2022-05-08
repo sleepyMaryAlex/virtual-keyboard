@@ -4,6 +4,7 @@ const DEFAULT_LANG = "en";
 let language = localStorage.getItem("language") || DEFAULT_LANG;
 
 let isCapsLocked = false;
+let isDel = false;
 
 let cursorPosition = 0;
 let textareaText = '';
@@ -29,7 +30,7 @@ function showContent() {
                                 <div class="key digit" id="Digit0">0</div>
                                 <div class="key symbol" id="Minus">-</div>
                                 <div class="key symbol" id="Equal">=</div>
-                                <div class="key control-key middle" id="Backspace">backspace</div>
+                                <div class="key control-key middle backspace" id="Backspace">backspace</div>
                             </div>
                             <div class="second-row">
                                 <div class="key control-key tab" id="Tab">tab</div>
@@ -46,7 +47,7 @@ function showContent() {
                                 <div class="key letter symbol" data-i18="[" id="BracketLeft">[</div>
                                 <div class="key letter symbol" data-i18="]" id="BracketRight">]</div>
                                 <div class="key symbol" id="Backslash">\\</div>
-                                <div class="key control-key" id="Delete">del</div>
+                                <div class="key control-key del" id="Delete">del</div>
                             </div>
                             <div class="third-row">
                                 <div class="key control-key middle capslock" id="CapsLock">caps lock</div>
@@ -217,7 +218,10 @@ function determinePressedKey(key) {
   }
   if (key.classList.contains("tab")) {
     enterText("\t");
-}
+  }
+  if (key.classList.contains("backspace")) {
+    deleteFromTextarea();
+  }
   updateTextarea();
 }
 
@@ -251,15 +255,22 @@ function updateTextarea() {
     textarea.focus();
 }
 
-function getSelectionStart() {
-    console.log(textarea.selectionStart);
-    return textarea.selectionStart;
+function deleteFromTextarea() {
+    if (cursorPosition > 0) {
+        textareaText = textareaText.substring(0, textarea.selectionStart - 1) + textareaText.substring(textarea.selectionEnd);
+        cursorPosition--;
+    }
 }
 
-function getSelectonEnd() {
-    console.log(textarea.selectionEnd);
-    return textarea.selectionEnd;
-}
+// function getSelectionStart() {
+//     console.log(textarea.selectionStart);
+//     return textarea.selectionStart;
+// }
+
+// function getSelectonEnd() {
+//     console.log(textarea.selectionEnd);
+//     return textarea.selectionEnd;
+// }
 
 function toUpperAndLowerCase(key) {
   if (isCapsLocked) {
