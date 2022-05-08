@@ -204,13 +204,16 @@ function identifyKey(e) {
 
 function determinePressedKey(key) {
   if (key.classList.contains("key") && !key.classList.contains("control-key")) {
-    enterText(key);
+    enterText(key.textContent);
   }
   if (key.classList.contains("arrow")) {
-      enterText(key);
+      enterText(key.textContent);
   }
   if (key.classList.contains("capslock")) {
     toUpperAndLowerCase(key);
+  }
+  if (key.classList.contains("enter")) {
+      enterText("\n");
   }
   updateTextarea();
 }
@@ -234,8 +237,7 @@ textarea.addEventListener("click", () => {
     cursorPosition = textarea.selectionStart;
 });
 
-function enterText(key) {
-    let text = key.textContent;
+function enterText(text) {
     textareaText = textareaText.substring(0, cursorPosition) + text + textareaText.substring(cursorPosition);
     cursorPosition += text.length;
 }
