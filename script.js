@@ -32,7 +32,7 @@ function showContent() {
                                 <div class="key control-key middle" id="Backspace">backspace</div>
                             </div>
                             <div class="second-row">
-                                <div class="key control-key" id="Tab">tab</div>
+                                <div class="key control-key tab" id="Tab">tab</div>
                                 <div class="key letter" data-i18="q" id="KeyQ">q</div>
                                 <div class="key letter" data-i18="w" id="KeyW">w</div>
                                 <div class="key letter" data-i18="e" id="KeyE">e</div>
@@ -215,6 +215,9 @@ function determinePressedKey(key) {
   if (key.classList.contains("enter")) {
       enterText("\n");
   }
+  if (key.classList.contains("tab")) {
+    enterText("\t");
+}
   updateTextarea();
 }
 
