@@ -163,10 +163,12 @@ function pressKey(e) {
 function releaseKey(e) {
   let key = document.querySelector(`#${e.code}`);
   if (key) {
-    if (key.classList.contains("control-key")) {
+    if (key.classList.contains("control-key") && !key.classList.contains("capslock")) {
       key.classList.remove("active-background");
     }
-    key.classList.remove("active");
+    if (!key.classList.contains("capslock")) {
+        key.classList.remove("active");
+    }
     determineUpKey(key);
   }
 }
