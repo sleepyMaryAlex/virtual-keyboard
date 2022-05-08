@@ -35,7 +35,7 @@ const i18Obj = {
     period: ".",
     slash: "/",
     system: "Keyboard created in Windows system",
-    changing: "For changing language: left ctrl + left alt",
+    changing: "For changing language: ctrl + alt",
   },
   'ru': {
     "backquote": "ё",
@@ -73,7 +73,7 @@ const i18Obj = {
     period: "ю",
     slash: ".",
     system: "Клавиатура создана в операционной системе Windows",
-    changing: "Для переключения языка: left ctrl + left alt",
+    changing: "Для переключения языка: ctrl + alt",
   },
 };
 export default i18Obj;

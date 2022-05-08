@@ -6,7 +6,7 @@ let language = localStorage.getItem("language") || DEFAULT_LANG;
 let isCapsLocked = false;
 
 let cursorPosition = 0;
-let textareaText = '';
+let textareaText = "";
 
 const body = document.querySelector("body");
 
@@ -92,7 +92,7 @@ function showContent() {
                         </div>
                         <div class="addition">
                             <p data-i18="system">Keyboard created in Windows system</p>
-                            <p data-i18="changing">For changing language: left ctrl + left alt</p>
+                            <p data-i18="changing">For changing language: ctrl + alt</p>
                         </div>
                     </div>`;
 
@@ -109,6 +109,8 @@ getTranslate();
 
 const controlLeft = document.querySelector("#ControlLeft");
 const altLeft = document.querySelector("#AltLeft");
+const controlRight = document.querySelector("#ControlRight");
+const altRight = document.querySelector("#AltRight");
 
 const textarea = document.querySelector(".textarea");
 const keyboard = document.querySelector(".keyboard");
@@ -135,6 +137,24 @@ function pressKey(e) {
   if (
     controlLeft.classList.contains("active") &&
     altLeft.classList.contains("active")
+  ) {
+    changeLanguage();
+  }
+  if (
+    controlRight.classList.contains("active") &&
+    altRight.classList.contains("active")
+  ) {
+    changeLanguage();
+  }
+  if (
+    controlRight.classList.contains("active") &&
+    altLeft.classList.contains("active")
+  ) {
+    changeLanguage();
+  }
+  if (
+    controlLeft.classList.contains("active") &&
+    altRight.classList.contains("active")
   ) {
     changeLanguage();
   }
@@ -207,13 +227,13 @@ function determinePressedKey(key) {
     enterText(key.textContent);
   }
   if (key.classList.contains("arrow")) {
-      enterText(key.textContent);
+    enterText(key.textContent);
   }
   if (key.classList.contains("capslock")) {
     toUpperAndLowerCase(key);
   }
   if (key.classList.contains("enter")) {
-      enterText("\n");
+    enterText("\n");
   }
   if (key.classList.contains("tab")) {
     enterText("\t");
@@ -243,29 +263,36 @@ function determineUpKey(key) {
 }
 
 textarea.addEventListener("click", () => {
-    cursorPosition = textarea.selectionStart;
+  cursorPosition = textarea.selectionStart;
 });
 
 function enterText(text) {
-    textareaText = textareaText.substring(0, cursorPosition) + text + textareaText.substring(cursorPosition);
-    cursorPosition += text.length;
+  textareaText =
+    textareaText.substring(0, cursorPosition) +
+    text +
+    textareaText.substring(cursorPosition);
+  cursorPosition += text.length;
 }
 
 function updateTextarea() {
-    textarea.textContent = textareaText;
-    textarea.selectionStart = cursorPosition;
-    textarea.focus();
+  textarea.textContent = textareaText;
+  textarea.selectionStart = cursorPosition;
+  textarea.focus();
 }
 
 function deleteFromTextarea() {
-    if (cursorPosition > 0) {
-        textareaText = textareaText.substring(0, textarea.selectionStart - 1) + textareaText.substring(textarea.selectionEnd);
-        cursorPosition--;
-    }
+  if (cursorPosition > 0) {
+    textareaText =
+      textareaText.substring(0, textarea.selectionStart - 1) +
+      textareaText.substring(textarea.selectionEnd);
+    cursorPosition--;
+  }
 }
 
 function deleteFromTextareaByDel() {
-    textareaText = textareaText.substring(0, textarea.selectionStart) + textareaText.substring(textarea.selectionEnd + 1);
+  textareaText =
+    textareaText.substring(0, textarea.selectionStart) +
+    textareaText.substring(textarea.selectionEnd + 1);
 }
 
 function toUpperAndLowerCase(key) {
