@@ -91,8 +91,8 @@ function showContent() {
                             </div>
                         </div>
                         <div class="addition">
-                            <p data-i18="system">Keyboard created in Windows system</p>
-                            <p data-i18="changing">For changing language: ctrl + alt</p>
+                            <p data-i18="system">keyboard created in windows system</p>
+                            <p data-i18="changing">for changing language: ctrl + alt</p>
                         </div>
                     </div>`;
 
