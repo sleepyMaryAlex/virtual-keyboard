@@ -4,7 +4,6 @@ const DEFAULT_LANG = "en";
 let language = localStorage.getItem("language") || DEFAULT_LANG;
 
 let isCapsLocked = false;
-let isDel = false;
 
 let cursorPosition = 0;
 let textareaText = '';
@@ -222,6 +221,9 @@ function determinePressedKey(key) {
   if (key.classList.contains("backspace")) {
     deleteFromTextarea();
   }
+  if (key.classList.contains("del")) {
+    deleteFromTextareaByDel();
+  }
   updateTextarea();
 }
 
@@ -262,15 +264,9 @@ function deleteFromTextarea() {
     }
 }
 
-// function getSelectionStart() {
-//     console.log(textarea.selectionStart);
-//     return textarea.selectionStart;
-// }
-
-// function getSelectonEnd() {
-//     console.log(textarea.selectionEnd);
-//     return textarea.selectionEnd;
-// }
+function deleteFromTextareaByDel() {
+    textareaText = textareaText.substring(0, textarea.selectionStart) + textareaText.substring(textarea.selectionEnd + 1);
+}
 
 function toUpperAndLowerCase(key) {
   if (isCapsLocked) {
