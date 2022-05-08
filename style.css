@@ -8,8 +8,18 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+    --main-bg-color: #D8D4DF;
+    --key-color: #898690;
+    --contrast-color: #67417d;
+    --keyboard-color: #a4a1ac;
+    --textarea-color: #ece8f3;
+    --control-key-color: #2f2f30;
+    --active-key-bg-color: #091212;
+}
+
 body {
-    background-color: rgb(188, 183, 183);
+    background-color: var(--main-bg-color);
     font-family: 'Barlow', sans-serif;
     font-weight: 600;
 }
@@ -18,22 +28,22 @@ h1 {
     font-family: 'Fredericka the Great', cursive;
     letter-spacing: 3px;
     font-size: 40px;
-    color: #0f1e1e;
+    color: var(--active-key-bg-color);
     text-align: center;
     margin-top: 4%;
     margin-bottom: 3%;
     padding: 5px;
-    text-shadow: 2px 2px 2px #ea8f20; 
+    text-shadow: 1px 1px 1px var(--contrast-color);
 }
 
 .textarea {
-    background-color: rgb(232, 225, 225);
+    background-color: var(--textarea-color);
     width: 100%;
     height: 200px;
     resize: none;
     outline: none;
     padding: 10px;
-    border: gray solid 3px;
+    border: var(--keyboard-color) solid 3px;
     border-radius: 5px;
     font-size: 18px;
 }
@@ -45,10 +55,11 @@ h1 {
 
 .keyboard {
     width: 1000px;
-    background-color: gray;
+    background-color: var(--keyboard-color);
     padding: 10px;
     border-radius: 5px;
     font-size: 22px;
+    font-weight: 500;
     color: whitesmoke;
 }
 
@@ -67,7 +78,7 @@ h1 {
     position: relative;
     width: 60px;
     height: 60px;
-    background-color:#ea8f20;
+    background-color: var(--key-color);
     margin: 6px;
     border-radius: 5px;
     text-align: center;
@@ -75,30 +86,19 @@ h1 {
     cursor: pointer;
     transition: background-color 0.6s;
     z-index: 1;
+    box-shadow: 2px 4px 4px var(--contrast-color), 1px 1px 1px var(--contrast-color);
 }
 
 .key:hover {
-    background-color: #0f1e1e;
+    background-color: var(--contrast-color);
 }
 
 .control-key {
-    background-color: rgb(47, 47, 47);
+    background-color: var(--control-key-color);
 }
 
 .control-key:hover {
-    background-color: #091212;
-}
-
-.key::after {
-    content:"";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    bottom: -6px;
-    left: -3px;
-    z-index: -1;
-    background-color: rgb(77, 77, 77);
-    border-radius: 5px;
+    background-color: var(--active-key-bg-color);
 }
 
 .key:active {
@@ -109,15 +109,15 @@ h1 {
 .active {
     top: 3px;
     left: 1px;
-    background-color: rgb(47, 47, 47);
+    background-color: var(--contrast-coloryu);
 }
 
 .active-background {
-    background-color: #091212;
+    background-color: var(--active-key-bg-color);
 }
 
 .capslock-active {
-    color: #ea8f20;
+    color: var(--contrast-color);
 }
 
 .big {
@@ -129,7 +129,7 @@ h1 {
 }
 
 .addition {
-    color: rgb(47, 47, 47);
+    color: var(--active-key-bg-color);
     text-align: center;
     margin: 20px;
 }
