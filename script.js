@@ -5,6 +5,9 @@ let language = localStorage.getItem("language") || DEFAULT_LANG;
 
 let isCapsLocked = false;
 
+let cursorPosition = 0;
+let textareaText = '';
+
 const body = document.querySelector("body");
 
 function showContent() {
@@ -58,7 +61,7 @@ function showContent() {
                                 <div class="key letter" data-i18="l" id="KeyL">l</div>
                                 <div class="key letter symbol" data-i18=";" id="Semicolon">;</div>
                                 <div class="key letter symbol" data-i18="quotes" id="Quote">'</div>
-                                <div class="key control-key middle" id="Enter">enter</div>
+                                <div class="key control-key middle enter" id="Enter">enter</div>
                             </div>
                             <div class="fourth-row">
                                 <div class="key control-key middle shift" id="ShiftLeft">shift</div>
@@ -72,7 +75,7 @@ function showContent() {
                                 <div class="key letter symbol" data-i18="comma" id="Comma">,</div>
                                 <div class="key letter symbol" data-i18="period" id="Period">.</div>
                                 <div class="key symbol" data-i18="slash" id="Slash">/</div>
-                                <div class="key control-key arrow-up" id="ArrowUp">&#9650;</div>
+                                <div class="key control-key arrow-up arrow" id="ArrowUp">▲</div>
                                 <div class="key control-key middle shift" id="ShiftRight">shift</div>
                             </div>
                             <div class="fifth-row">
@@ -81,9 +84,9 @@ function showContent() {
                                 <div class="key control-key" id="AltLeft">alt</div>
                                 <div class="key big" id="Space"> </div>
                                 <div class="key control-key" id="AltRight">alt</div>
-                                <div class="key control-key" id="ArrowLeft">&#9668;</div>
-                                <div class="key control-key" id="ArrowDown">&#9660;</div>
-                                <div class="key control-key" id="ArrowRight">&#9658;</div>
+                                <div class="key control-key arrow" id="ArrowLeft">◄</div>
+                                <div class="key control-key arrow" id="ArrowDown">▼</div>
+                                <div class="key control-key arrow" id="ArrowRight">►</div>
                                 <div class="key control-key" id="ControlRight">ctrl</div>
                             </div>
                         </div>
@@ -124,7 +127,7 @@ function pressKey(e) {
     }
     key.classList.add("active");
     if (key.classList.contains("shift")) {
-      changeSymbols();
+      shiftSymbols();
       changeLetters();
     }
     determinePressedKey(key);
@@ -182,7 +185,7 @@ keyboard.addEventListener("click", identifyKey);
 
 shifts.forEach((shift) =>
   shift.addEventListener("mousedown", () => {
-    changeSymbols();
+    shiftSymbols();
     changeLetters();
   })
 );
@@ -201,11 +204,15 @@ function identifyKey(e) {
 
 function determinePressedKey(key) {
   if (key.classList.contains("key") && !key.classList.contains("control-key")) {
-    writeText(key);
+    enterText(key);
+  }
+  if (key.classList.contains("arrow")) {
+      enterText(key);
   }
   if (key.classList.contains("capslock")) {
     toUpperAndLowerCase(key);
   }
+  updateTextarea();
 }
 
 function determineUpKey(key) {
@@ -219,14 +226,34 @@ function determineUpKey(key) {
         (letter) => (letter.textContent = letter.textContent.toUpperCase())
       );
     }
-    returnSymbols();
+    unshiftSymbols();
   }
 }
 
-function writeText(key) {
-  textarea.textContent += key.textContent;
-  textarea.focus();
-  textarea.selectionStart = textarea.value.length;
+textarea.addEventListener("click", () => {
+    cursorPosition = textarea.selectionStart;
+});
+
+function enterText(key) {
+    let text = key.textContent;
+    textareaText = textareaText.substring(0, cursorPosition) + text + textareaText.substring(cursorPosition);
+    cursorPosition += text.length;
+}
+
+function updateTextarea() {
+    textarea.textContent = textareaText;
+    textarea.selectionStart = cursorPosition;
+    textarea.focus();
+}
+
+function getSelectionStart() {
+    console.log(textarea.selectionStart);
+    return textarea.selectionStart;
+}
+
+function getSelectonEnd() {
+    console.log(textarea.selectionEnd);
+    return textarea.selectionEnd;
 }
 
 function toUpperAndLowerCase(key) {
@@ -249,7 +276,7 @@ function toUpperAndLowerCase(key) {
   }
 }
 
-function changeSymbols() {
+function shiftSymbols() {
   let [one, two, three, four, five, six, seven, eight, nine, zero] = digits;
   let [
     backquote,
@@ -304,7 +331,7 @@ function changeSymbols() {
   }
 }
 
-function returnSymbols() {
+function unshiftSymbols() {
   let [one, two, three, four, five, six, seven, eight, nine, zero] = digits;
   let [
     backquote,
