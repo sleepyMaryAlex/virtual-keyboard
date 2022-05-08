@@ -9,31 +9,35 @@
 }
 
 :root {
-    --main-bg-color: #D8D4DF;
-    --key-color: #898690;
-    --contrast-color: #67417d;
-    --keyboard-color: #a4a1ac;
-    --textarea-color: #ece8f3;
+    --key-color: #858487;
+    --contrast-color: #453575d2;
+    --keyboard-color: #bbbbbb;
+    --textarea-color: #f6f4f9;
     --control-key-color: #2f2f30;
     --active-key-bg-color: #091212;
 }
 
 body {
-    background-color: var(--main-bg-color);
+    background-image: url(assets/image.jpg);
     font-family: 'Barlow', sans-serif;
     font-weight: 600;
+    color: whitesmoke;
 }
 
 h1 {
     font-family: 'Fredericka the Great', cursive;
     letter-spacing: 3px;
     font-size: 40px;
-    color: var(--active-key-bg-color);
     text-align: center;
     margin-top: 4%;
     margin-bottom: 3%;
     padding: 5px;
     text-shadow: 1px 1px 1px var(--contrast-color);
+    transition: color 0.5s;
+}
+
+h1:hover {
+    color: #a194c871;
 }
 
 .textarea {
@@ -46,6 +50,7 @@ h1 {
     border: var(--keyboard-color) solid 3px;
     border-radius: 5px;
     font-size: 18px;
+    font-family: inherit;
 }
 
 .wrapper {
@@ -60,7 +65,6 @@ h1 {
     border-radius: 5px;
     font-size: 22px;
     font-weight: 500;
-    color: whitesmoke;
 }
 
 .first-row, 
@@ -129,7 +133,6 @@ h1 {
 }
 
 .addition {
-    color: var(--active-key-bg-color);
     text-align: center;
     margin: 20px;
 }
