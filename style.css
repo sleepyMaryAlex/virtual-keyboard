@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --key-color: #858487;
+    --contrast-color: #453575d2;
+    --keyboard-color: #bbbbbb;
+    --textarea-color: #f6f4f9;
+    --control-key-color: #2f2f30;
+    --active-key-bg-color: #091212;
+}
+
+body {
+    background-image: url(assets/image.jpg);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+h1 {
+    font-family: 'Fredericka the Great', cursive;
+    letter-spacing: 3px;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    padding: 5px;
+    text-shadow: 1px 1px 1px var(--contrast-color);
+    transition: color 0.5s;
+}
+
+h1:hover {
+    color: #a194c871;
+}
+
+.textarea {
+    background-color: var(--textarea-color);
+    width: 100%;
+    height: 200px;
+    resize: none;
+    outline: none;
+    padding: 10px;
+    border: var(--keyboard-color) solid 3px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: inherit;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.keyboard {
+    width: 1000px;
+    background-color: var(--keyboard-color);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.first-row, 
+.second-row, 
+.third-row, 
+.fourth-row, 
+.fifth-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.key {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: var(--key-color);
+    margin: 6px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 17px 0;
+    cursor: pointer;
+    transition: background-color 0.6s;
+    z-index: 1;
+    box-shadow: 2px 4px 4px var(--contrast-color), 1px 1px 1px var(--contrast-color);
+}
+
+.key:hover {
+    background-color: var(--contrast-color);
+}
+
+.control-key {
+    background-color: var(--control-key-color);
+}
+
+.control-key:hover {
+    background-color: var(--active-key-bg-color);
+}
+
+.key:active {
+    top: 3px;
+    left: 1px;
+}
+
+.active {
+    top: 3px;
+    left: 1px;
+    background-color: var(--contrast-color);
+}
+
+.active-background {
+    background-color: var(--active-key-bg-color);
+}
+
+.capslock-active {
+    color: var(--contrast-color);
+}
+
+.big {
+    width: 490px;
+}
+
+.middle {
+    width: 130px;
+}
+
+.addition {
+    text-align: center;
+    margin: 20px;
+}
