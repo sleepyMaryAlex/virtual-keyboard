@@ -109,7 +109,7 @@ h1 {
 .active {
     top: 3px;
     left: 1px;
-    background-color: var(--contrast-coloryu);
+    background-color: var(--contrast-color);
 }
 
 .active-background {
