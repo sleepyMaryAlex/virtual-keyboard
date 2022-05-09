@@ -1,7 +1,7 @@
 class Keyboard {
-  constructor(language, translationServise, textarea) {
+  constructor(language, translationService, textarea) {
     this.language = language;
-    this.translationServise = translationServise;
+    this.translationService = translationService;
     this.textarea = textarea;
 
     this.isCapsLocked = false;
@@ -24,7 +24,7 @@ class Keyboard {
   updateTranslation() {
     this.data.forEach((value) => {
       const elem = value;
-      const translation = this.translationServise.getTranslation(
+      const translation = this.translationService.getTranslation(
         elem.dataset.i18n,
       );
       elem.textContent = this.isCapsLocked

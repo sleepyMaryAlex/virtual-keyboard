@@ -1,5 +1,5 @@
 import Language from './modules/language';
-import TranslationServise from './modules/translate';
+import TranslationService from './modules/translate';
 import Textarea from './modules/textarea';
 import Keyboard from './modules/keyboard';
 
@@ -96,9 +96,9 @@ function initializeContent() {
 initializeContent();
 
 const language = new Language();
-const translationServise = new TranslationServise(language);
+const translationService = new TranslationService(language);
 const textarea = new Textarea();
-const keyboard = new Keyboard(language, translationServise, textarea);
+const keyboard = new Keyboard(language, translationService, textarea);
 
 textarea.textarea.addEventListener('click', () => {
   textarea.cursorPosition = textarea.textarea.selectionStart;

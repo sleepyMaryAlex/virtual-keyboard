@@ -77,7 +77,7 @@ const i18n = {
   },
 };
 
-class TranslationServise {
+class TranslationService {
   constructor(language) {
     this.language = language;
   }
@@ -87,4 +87,4 @@ class TranslationServise {
   }
 }
 
-export default TranslationServise;
+export default TranslationService;
