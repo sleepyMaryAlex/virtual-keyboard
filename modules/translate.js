@@ -1,4 +1,4 @@
-const i18Obj = {
+const i18n = {
   en: {
     backquote: '`',
     q: 'q',
@@ -76,4 +76,15 @@ const i18Obj = {
     changing: 'для переключения языка: ctrl + alt',
   },
 };
-export default i18Obj;
+
+class TranslationServise {
+  constructor(language) {
+    this.language = language;
+  }
+
+  getTranslation(key) {
+    return i18n[this.language.currentLanguage][key];
+  }
+}
+
+export default TranslationServise;

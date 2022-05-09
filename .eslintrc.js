@@ -11,7 +11,5 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "import/extensions": "off",
-    "no-param-reassign": ["error", { "props": false }]
   },
 };
