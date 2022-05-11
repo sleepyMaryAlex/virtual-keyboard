@@ -85,8 +85,8 @@ function initializeContent() {
                               </div>
                           </div>
                           <div class="addition">
-                              <p data-i18n="system">keyboard created in windows system</p>
-                              <p data-i18n="changing">for changing language: ctrl + alt</p>
+                              <p>keyboard created in windows system</p>
+                              <p>for changing language: left ctrl + left alt</p>
                           </div>
                       </div>`;
 

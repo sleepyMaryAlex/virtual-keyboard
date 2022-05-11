@@ -34,8 +34,6 @@ const i18n = {
     comma: ',',
     period: '.',
     slash: '/',
-    system: 'keyboard created in windows system',
-    changing: 'for changing language: ctrl + alt',
   },
   ru: {
     backquote: 'ё',
@@ -72,8 +70,6 @@ const i18n = {
     comma: 'б',
     period: 'ю',
     slash: '.',
-    system: 'клавиатура создана в операционной системе windows',
-    changing: 'для переключения языка: ctrl + alt',
   },
 };
 

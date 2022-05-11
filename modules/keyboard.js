@@ -5,6 +5,7 @@ class Keyboard {
     this.textarea = textarea;
 
     this.isCapsLocked = false;
+    this.isShift = false;
 
     this.data = document.querySelectorAll('[data-i18n]');
 
@@ -161,6 +162,17 @@ class Keyboard {
       key.classList.add('active-background');
       this.isCapsLocked = true;
     }
+    if ((this.isCapsLocked && this.isShift) || (!this.isCapsLocked && !this.isShift)) {
+      this.letters.forEach((value) => {
+        const letter = value;
+        letter.textContent = letter.textContent.toLowerCase();
+      });
+    } else {
+      this.letters.forEach((value) => {
+        const letter = value;
+        letter.textContent = letter.textContent.toUpperCase();
+      });
+    }
   }
 
   determinePressedKey(key) {
@@ -194,24 +206,6 @@ class Keyboard {
     if (key.classList.contains('control-left') && this.altLeft.classList.contains('active')) {
       this.changeLanguage();
     }
-    if (key.classList.contains('alt-right') && this.controlRight.classList.contains('active')) {
-      this.changeLanguage();
-    }
-    if (key.classList.contains('control-right') && this.altRight.classList.contains('active')) {
-      this.changeLanguage();
-    }
-    if (key.classList.contains('alt-left') && this.controlRight.classList.contains('active')) {
-      this.changeLanguage();
-    }
-    if (key.classList.contains('control-right') && this.altLeft.classList.contains('active')) {
-      this.changeLanguage();
-    }
-    if (key.classList.contains('alt-right') && this.controlLeft.classList.contains('active')) {
-      this.changeLanguage();
-    }
-    if (key.classList.contains('control-left') && this.altRight.classList.contains('active')) {
-      this.changeLanguage();
-    }
     this.textarea.updateTextarea();
   }
 
@@ -233,6 +227,7 @@ class Keyboard {
       if (key.classList.contains('shift')) {
         this.shiftSymbols();
         this.shiftLetters();
+        this.isShift = true;
       }
       this.determinePressedKey(key);
     }
@@ -252,6 +247,7 @@ class Keyboard {
         });
       }
       this.unshiftSymbols();
+      this.isShift = false;
     }
   }
 
